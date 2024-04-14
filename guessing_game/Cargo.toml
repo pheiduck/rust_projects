@@ -2,6 +2,7 @@
 name = "guessing_game"
 version = "0.2.0"
 edition = "2024"
+cargo-features = ["edition2024"]
 
 [dependencies]
 rand = "0.8.5"
