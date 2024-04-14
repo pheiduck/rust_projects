@@ -13,9 +13,7 @@ jobs:
     - uses: actions/checkout@main
     - name: Build
       run: |
-        cd src
-        cargo build --verbose
+        cargo build --bin main --verbose
     - name: Run tests
       run: |
-        cd src
-        cargo test --verbose
+        cargo test --bin main --verbose
