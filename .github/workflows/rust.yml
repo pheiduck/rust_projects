@@ -9,12 +9,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        rust:
-          - stable
-          - beta
-          - nightly
     steps:
     - uses: actions/checkout@main
     - name: Install Rust
@@ -23,8 +17,8 @@ jobs:
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     - name: Install toolchain
       run: | 
-        rustup toolchain install ${{ matrix.rust }}
-        rustup default ${{ matrix.rust }}
+        rustup toolchain install nightly
+        rustup default nightly
     - name: Build
       run: |
         cd guessing_game
