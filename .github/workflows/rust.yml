@@ -15,9 +15,9 @@ jobs:
       run: |
         rm -f ~/.cargo/bin/*
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-        cd src/guessing_game
+        cd guessing_game
         cargo build --verbose
     - name: Run tests
       run: |
-        cd src/bin
+        cd guessing_game
         cargo test --verbose
