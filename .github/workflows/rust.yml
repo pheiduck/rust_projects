@@ -1,4 +1,4 @@
-ename: Rust
+name: Rust
 on:
   push:
     branches: [ "main" ]
