@@ -4,6 +4,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  schedule:
+    - cron: "0 0 * * *"
 env:
   CARGO_TERM_COLOR: always
 jobs:
@@ -14,7 +16,7 @@ jobs:
     - name: Install Rust
       run: |
         rm -f ~/.cargo/bin/*
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs | sh -s -- -y
     - name: Install toolchain
       run: | 
         rustup toolchain install nightly
