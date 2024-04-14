@@ -14,8 +14,8 @@ jobs:
     - name: Run
       run: |
         cd src/bin
-        cargo run main --verbose
+        cargo --bin run main --verbose
     - name: Run tests
       run: |
         cd src/bin
-        cargo test main --verbose
+        cargo --bin test main --verbose
