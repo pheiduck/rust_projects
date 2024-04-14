@@ -8,6 +8,3 @@ edition = "2024"
 codegen-units = 1
 lto = false
 strip = "symbols"
-
-[dependencies]
-rand = "0.8.5"

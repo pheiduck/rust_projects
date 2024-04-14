@@ -24,11 +24,15 @@ jobs:
     - name: Build
       run: |
         cd guessing_game
+        cargo install cargo-edit
+        cargo add rand
         cargo update --verbose
         cargo build --release --verbose
     - name: Run tests
       run: |
         cd guessing_game
+        cargo install cargo-edit
+        cargo add rand
         cargo test --verbose
 
   rustfmt:
@@ -48,6 +52,8 @@ jobs:
       - name: Check formatting
         run: |
           cd guessing_game
+          cargo install cargo-edit
+          cargo add rand
           cargo fmt -- --check
 
   clippy:
@@ -67,4 +73,6 @@ jobs:
       - name: Validate clippy
         run: |
           cd guessing_game
+          cargo install cargo-edit
+          cargo add rand
           cargo clippy
