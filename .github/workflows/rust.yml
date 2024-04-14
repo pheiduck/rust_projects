@@ -34,7 +34,7 @@ jobs:
         cd guessing_game
         cargo test --verbose
 
-rustfmt:
+  rustfmt:
     name: rustfmt
     runs-on: ubuntu-latest
     steps:
