@@ -47,8 +47,8 @@ jobs:
           curl https://sh.rustup.rs -sSf | sh -s -- -y
       - name: Install toolchain
         run: |
-          rustup toolchain install stable
-          rustup default stable
+          rustup toolchain install nightly
+          rustup default nightly
       - name: Check formatting
         run: |
           cd guessing_game
