@@ -28,6 +28,7 @@ jobs:
     - name: Build
       run: |
         cd guessing_game
+        cargo update --verbose
         cargo build --verbose
     - name: Run tests
       run: |
