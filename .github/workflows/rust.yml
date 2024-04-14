@@ -25,7 +25,6 @@ jobs:
       run: |
         cd guessing_game
         cargo add rand
-        cargo update --verbose
         cargo build --release --verbose
     - name: Run tests
       run: |
