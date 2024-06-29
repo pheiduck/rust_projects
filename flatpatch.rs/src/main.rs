@@ -52,8 +52,8 @@ fn main() {
             Command::new("snap")
                 .arg("list")
                 .output()
-                .expect("Failed to get list of installed snaps")
-                .stdout,
+                .expect("Failed to get list of installed snaps");
+
         )
         .output()
         .expect("Failed to remove installed snaps");
