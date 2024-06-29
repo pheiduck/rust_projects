@@ -52,7 +52,7 @@ fn main() {
             Command::new("snap")
                 .arg("list")
                 .output()
-                .expect("Failed to get list of installed snaps");
+                .expect("Failed to get list of installed snaps")
 
         )
         .output()
