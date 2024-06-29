@@ -1,5 +1,6 @@
 // Copyright (c) Philip H.
 
+#[allow(unused_imports)]
 use nix::unistd::User;
 use std::process::Command;
 
