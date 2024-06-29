@@ -1,10 +1,10 @@
 // Copyright (c) Philip H.
 
-use std::env;
+use nix::unistd::Uid;
 use std::process::Command;
 
     // Check Privileges
-if env::var("USER").unwrap() != "root" {
+if !Uid::effective().is_root() {
     eprintln!("WARNING: \x1b[0mPlease run with sudo privileges.");
 } else {
 let output = if cfg!(os_relase != "Ubuntu") {
