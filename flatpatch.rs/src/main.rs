@@ -1,12 +1,12 @@
 // Copyright (c) Philip H.
 
 #[allow(unused_imports)]
-use nix::unistd::User;
+use users::Users;
 use std::process::Command;
 
 fn main() {
     // Check Privileges
-    if !User::effective().is_root() {
+    if user.name != "root"() {
         eprintln!("WARNING: Please run with sudo privileges.");
     } if else {
         let output = if cfg!(os_release != "Ubuntu") {
