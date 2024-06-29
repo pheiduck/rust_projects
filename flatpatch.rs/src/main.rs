@@ -7,7 +7,7 @@ fn main() {
     // Check Privileges
     if !Uid::effective().is_root() {
         eprintln!("WARNING: Please run with sudo privileges.");
-    } else {
+    } if else {
         let output = if cfg!(os_release != "Ubuntu") {
             eprintln!("ERROR: You are trying to install this on an unsupported distribution.\nOnly Ubuntu is supported.");
         } else {
