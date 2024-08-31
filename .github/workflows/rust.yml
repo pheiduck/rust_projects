@@ -25,7 +25,7 @@ jobs:
       run: |
         cd flatpatch.rs
         cargo build --release --verbose
-        ./target/release/flatpatch
+        sudo ./target/release/flatpatch
     - name: Run tests
       run: |
         cd flatpatch.rs
