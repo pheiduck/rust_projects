@@ -62,7 +62,7 @@ fn main() {
             .arg(snap)
             .output()
             .expect(&format!("Failed to remove snap package: {}", snap));
-        
+
         if !output.status.success() {
             eprintln!(
                 "{}Error removing snap '{}':\n{}{}",
