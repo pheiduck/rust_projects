@@ -1,8 +1,8 @@
 use std::env;
 use std::fs::{self, File};
 use std::io::Write;
-use std::process::{Command, exit};
 use std::path::Path;
+use std::process::{Command, exit};
 
 fn main() {
     // Farben definieren
@@ -64,7 +64,13 @@ fn main() {
             .expect(&format!("Failed to remove snap package: {}", snap));
         
         if !output.status.success() {
-            eprintln!("{}Error removing snap '{}':\n{}{}", red, snap, String::from_utf8_lossy(&output.stderr), nc);
+            eprintln!(
+                "{}Error removing snap '{}':\n{}{}",
+                red,
+                snap,
+                String::from_utf8_lossy(&output.stderr),
+                nc
+            );
         } else {
             println!("{}Successfully removed snap '{}'.{}", green, snap, nc);
         }
@@ -81,9 +87,17 @@ fn main() {
         .expect("Failed to purge snapd and related packages");
 
     if !output.status.success() {
-        eprintln!("{}Error purging snapd:\n{}{}", red, String::from_utf8_lossy(&output.stderr), nc);
+        eprintln!(
+            "{}Error purging snapd:\n{}{}",
+            red,
+            String::from_utf8_lossy(&output.stderr),
+            nc
+        );
     } else {
-        println!("{}Successfully purged snapd and related packages.{}", green, nc);
+        println!(
+            "{}Successfully purged snapd and related packages.{}",
+            green, nc
+        );
     }
 
     // Verzeichnisse entfernen
@@ -109,9 +123,17 @@ fn main() {
     }
 
     println!("{}Reloading systemd daemon...{}", green, nc);
-    let output = Command::new("systemctl").arg("daemon-reload").output().expect("Failed to reload systemd daemon");
+    let output = Command::new("systemctl")
+        .arg("daemon-reload")
+        .output()
+        .expect("Failed to reload systemd daemon");
     if !output.status.success() {
-        eprintln!("{}Error reloading systemd daemon:\n{}{}", red, String::from_utf8_lossy(&output.stderr), nc);
+        eprintln!(
+            "{}Error reloading systemd daemon:\n{}{}",
+            red,
+            String::from_utf8_lossy(&output.stderr),
+            nc
+        );
     } else {
         println!("{}Successfully reloaded systemd daemon.{}", green, nc);
     }
@@ -124,14 +146,27 @@ fn main() {
         .expect("Failed to add Flatpak PPA");
 
     if !output.status.success() {
-        eprintln!("{}Error adding Flatpak PPA:\n{}{}", red, String::from_utf8_lossy(&output.stderr), nc);
+        eprintln!(
+            "{}Error adding Flatpak PPA:\n{}{}",
+            red,
+            String::from_utf8_lossy(&output.stderr),
+            nc
+        );
     } else {
         println!("{}Successfully added Flatpak PPA.{}", green, nc);
     }
 
-    let output = Command::new("apt-get").arg("update").output().expect("Failed to update package list");
+    let output = Command::new("apt-get")
+        .arg("update")
+        .output()
+        .expect("Failed to update package list");
     if !output.status.success() {
-        eprintln!("{}Error updating package list:\n{}{}", red, String::from_utf8_lossy(&output.stderr), nc);
+        eprintln!(
+            "{}Error updating package list:\n{}{}",
+            red,
+            String::from_utf8_lossy(&output.stderr),
+            nc
+        );
     } else {
         println!("{}Successfully updated package list.{}", green, nc);
     }
@@ -145,7 +180,12 @@ fn main() {
         .expect("Failed to install Flatpak and plugin");
 
     if !output.status.success() {
-        eprintln!("{}Error installing Flatpak:\n{}{}", red, String::from_utf8_lossy(&output.stderr), nc);
+        eprintln!(
+            "{}Error installing Flatpak:\n{}{}",
+            red,
+            String::from_utf8_lossy(&output.stderr),
+            nc
+        );
     } else {
         println!("{}Successfully installed Flatpak and plugin.{}", green, nc);
     }
@@ -159,10 +199,18 @@ fn main() {
         .expect("Failed to add Flathub remote");
 
     if !output.status.success() {
-        eprintln!("{}Error adding Flathub remote:\n{}{}", red, String::from_utf8_lossy(&output.stderr), nc);
+        eprintln!(
+            "{}Error adding Flathub remote:\n{}{}",
+            red,
+            String::from_utf8_lossy(&output.stderr),
+            nc
+        );
     } else {
         println!("{}Successfully added Flathub remote.{}", green, nc);
     }
 
-    println!("{}It's recommended to reboot the system! 'sudo systemctl reboot'{}", yellow, nc);
+    println!(
+        "{}It's recommended to reboot the system! 'sudo systemctl reboot'{}",
+        yellow, nc
+    );
 }
