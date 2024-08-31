@@ -41,11 +41,13 @@ fn main() {
         .output()
         .expect("Failed to list snap packages");
 
-    let snaps: Vec<&str> = binding
+    let snap_list_output_str = String::from_utf8_lossy(&snap_list_output.stdout);
+
+    let snaps: Vec<&str> = snap_list_output_str
         .lines()
-        .skip(1)
-        .filter(|line| !line.starts_with("core"))
-        .map(|line| line.split_whitespace().next().unwrap())
+        .skip(1) // Überspringt die Kopfzeile
+        .filter(|line| !line.starts_with("core")) // Filtert 'core' aus
+        .map(|line| line.split_whitespace().next().unwrap()) // Extrahiert den Paketnamen
         .collect();
 
     for snap in snaps {
