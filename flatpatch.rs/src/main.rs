@@ -1,8 +1,8 @@
 use std::env;
 use std::fs::{self, File};
 use std::io::Write;
-use std::process::{exit, Command};
 use std::path::Path;
+use std::process::{exit, Command};
 
 fn main() {
     // Farben definieren
@@ -86,9 +86,7 @@ fn main() {
         .arg("ppa:flatpak/stable")
         .output();
 
-    let _ = Command::new("apt-get")
-        .arg("update")
-        .output();
+    let _ = Command::new("apt-get").arg("update").output();
 
     let _ = Command::new("apt-get")
         .arg("install")
