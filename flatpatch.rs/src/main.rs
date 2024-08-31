@@ -1,6 +1,6 @@
 use std::env;
 use std::fs::{self, File};
-use std::io::{self, Write};
+use std::io::Write;
 use std::process::{Command, exit};
 use std::path::Path;
 
@@ -41,7 +41,7 @@ fn main() {
         .output()
         .expect("Failed to list snap packages");
 
-    let snaps: Vec<&str> = String::from_utf8_lossy(&snap_list_output.stdout)
+    let snaps: Vec<&str> = binding
         .lines()
         .skip(1)
         .filter(|line| !line.starts_with("core"))
@@ -106,4 +106,3 @@ fn main() {
 
     println!("It's recommended to reboot the system! 'sudo systemctl reboot'");
 }
-
