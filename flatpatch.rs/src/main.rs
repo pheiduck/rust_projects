@@ -61,7 +61,7 @@ fn main() {
             .arg("--purge")
             .arg(snap)
             .output()
-            .expect(&format!("Failed to remove snap package: {}", snap));
+            .unwrap_or_else(|_| panic!("Failed to remove snap package: {}", snap));
 
         if !output.status.success() {
             eprintln!(
