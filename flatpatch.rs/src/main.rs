@@ -1,7 +1,7 @@
 use std::env;
 use std::fs::{self, File};
 use std::io::Write;
-use std::process::{Command, exit};
+use std::process::{exit, Command};
 use std::path::Path;
 
 fn main() {
@@ -78,9 +78,7 @@ fn main() {
         let _ = fs::remove_dir_all(path);
     }
 
-    let _ = Command::new("systemctl")
-        .arg("daemon-reload")
-        .output();
+    let _ = Command::new("systemctl").arg("daemon-reload").output();
 
     // Flatpak installieren
     println!("{}Install Flatpak...{}", green, nc);
