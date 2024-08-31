@@ -23,13 +23,12 @@ jobs:
         rustup default nightly
     - name: Build
       run: |
-        cd guessing_game
-        cargo add rand
+        cd flatpatch.rs
         cargo build --release --verbose
+        sudo ./target/release/flatpatch
     - name: Run tests
       run: |
-        cd guessing_game
-        cargo add rand
+        cd flatpatch.rs
         cargo test --verbose
 
   rustfmt:
@@ -48,8 +47,7 @@ jobs:
           rustup default nightly
       - name: Check formatting
         run: |
-          cd guessing_game
-          cargo add rand
+          cd flatpatch.rs
           cargo fmt -- --check
 
   clippy:
@@ -68,6 +66,5 @@ jobs:
           rustup default nightly
       - name: Validate clippy
         run: |
-          cd guessing_game
-          cargo add rand
+          cd flatpatch.rs
           cargo clippy
