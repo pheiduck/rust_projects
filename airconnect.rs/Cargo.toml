@@ -2,16 +2,19 @@
 name = "airconnect_installer"
 version = "0.1.0"
 edition = "2021"
-
-# Eine kurze Beschreibung des Projekts
+authors = ["Philip Heiduck <airconnect@github.com>"]
 description = "A Rust program to install or update AirConnect on a Linux system."
 license = "MIT"
+repository = "https://github.com/yourusername/airconnect_installer"
+readme = "README.md"
+keywords = ["AirConnect", "installer", "Linux", "Rust", "systemd"]
+categories = ["command-line-utilities", "system-utilities"]
 
-# Abhängigkeiten für das Projekt
 [dependencies]
-# Hinzufügen der 'tempfile'-Crate, falls temporäre Dateien verwendet werden sollen
 tempfile = "3.3"
-# 'which' Crate zur Prüfung, ob bestimmte Befehle auf dem System verfügbar sind
 which = "4.4"
-# 'indicatif' Crate für die Anzeige von Fortschrittsbalken
-indicatif = "0.16"
+indicatif = { version = "0.16", features = ["progress-bars"] }
+
+[features]
+default = ["progress"]
+progress = ["indicatif"]
