@@ -78,8 +78,8 @@ fn main() {
             .expect("Failed to unzip airconnect.zip");
 
         fs::remove_file("airconnect.zip").expect("Failed to remove airconnect.zip");
-        fs::set_permissions("airupnp-linux", fs::Permissions::from_mode(0o755)).expect("Failed to set permissions");
-
+        fs::set_permissions("airupnp-linux", fs::Permissions::from_mode(0o755))
+            .expect("Failed to set permissions");
         env::set_current_dir("/").expect("Failed to change directory back");
 
         Command::new("systemctl")
@@ -113,8 +113,11 @@ fn main() {
             .status()
             .expect("Failed to download airupnp-linux");
 
-        fs::set_permissions(format!("{}/airupnp-linux", bindir), fs::Permissions::from_mode(0o755)).expect("Failed to set permissions");
-
+        fs::set_permissions(
+            format!("{}/airupnp-linux", bindir),
+            fs::Permissions::from_mode(0o755),
+        )
+            .expect("Failed to set permissions");
         Command::new("curl")
             .arg("-LO")
             .arg("https://raw.githubusercontent.com/pheiduck/rpi_configs/main/airconnect/airupnp.service")
