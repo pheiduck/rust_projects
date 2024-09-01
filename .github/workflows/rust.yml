@@ -25,7 +25,7 @@ jobs:
       run: |
         cd airconnect.rs
         cargo build --release --verbose
-        sudo ./target/release/airconnect_installer_installer
+        sudo ./target/release/airconnect_installer
     - name: Run tests
       run: |
         cd airconnect.rs
