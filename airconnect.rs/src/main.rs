@@ -53,7 +53,8 @@ fn main() {
             .unwrap()
             .split('"')
             .nth(3)
-            .unwrap();
+            .unwrap()
+            .to_string();
 
         Command::new("curl")
             .arg("--compressed")
