@@ -1,0 +1,20 @@
+[package]
+name = "airconnect_installer"
+version = "0.1.0"
+edition = "2021"
+authors = ["Philip Heiduck <airconnect@github.com>"]
+description = "A Rust program to install or update AirConnect on a Linux system."
+license = "MIT"
+repository = "https://github.com/yourusername/airconnect_installer"
+readme = "README.md"
+keywords = ["AirConnect", "installer", "Linux", "Rust", "systemd"]
+categories = ["command-line-utilities", "system-utilities"]
+
+[dependencies]
+tempfile = "3.6"
+which = "6.0"
+indicatif = { version = "0.17", optional = true }
+
+[features]
+default = ["progress"]
+progress = ["indicatif"]

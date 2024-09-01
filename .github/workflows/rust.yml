@@ -23,12 +23,12 @@ jobs:
         rustup default nightly
     - name: Build
       run: |
-        cd flatpatch.rs
+        cd airconnect.rs
         cargo build --release --verbose
-        sudo ./target/release/flatpatch
+        sudo ./target/release/airconnect_installer
     - name: Run tests
       run: |
-        cd flatpatch.rs
+        cd airconnect.rs
         cargo test --verbose
 
   rustfmt:
@@ -47,7 +47,7 @@ jobs:
           rustup default nightly
       - name: Check formatting
         run: |
-          cd flatpatch.rs
+          cd airconnect.rs
           cargo fmt -- --check
 
   clippy:
@@ -66,5 +66,5 @@ jobs:
           rustup default nightly
       - name: Validate clippy
         run: |
-          cd flatpatch.rs
+          cd airconnect.rs
           cargo clippy
