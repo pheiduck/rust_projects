@@ -13,7 +13,7 @@ categories = ["command-line-utilities", "system-utilities"]
 [dependencies]
 tempfile = "3.3"
 which = "4.4"
-indicatif = { version = "0.16", features = ["progress-bars"] }
+indicatif = { version = "0.16", optional = true }
 
 [features]
 default = ["progress"]
