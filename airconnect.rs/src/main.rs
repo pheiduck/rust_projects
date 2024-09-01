@@ -117,7 +117,7 @@ fn main() {
             format!("{}/airupnp-linux", bindir),
             fs::Permissions::from_mode(0o755),
         )
-            .expect("Failed to set permissions");
+        .expect("Failed to set permissions");
         Command::new("curl")
             .arg("-LO")
             .arg("https://raw.githubusercontent.com/pheiduck/rpi_configs/main/airconnect/airupnp.service")
