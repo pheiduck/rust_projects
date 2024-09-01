@@ -2,7 +2,7 @@ use std::env;
 use std::fs;
 use std::io::Write;
 use std::os::unix::fs::PermissionsExt;
-use std::process::{Command, exit};
+use std::process::{exit, Command};
 
 fn main() {
     // Variables
