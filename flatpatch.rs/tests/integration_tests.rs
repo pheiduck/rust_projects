@@ -9,7 +9,7 @@ fn test_root_check() {
     // Mock the environment variable USER to simulate running as a non-root user
     std::env::set_var("USER", "non-root");
 
-    let mut cmd = Command::cargo_bin("your_program_name").unwrap();
+    let mut cmd = Command::cargo_bin("flatpatch").unwrap();
     cmd.assert()
         .failure()
         .stderr(contains("Please run with sudo privileges."));
@@ -27,7 +27,7 @@ fn test_os_check() {
     std::env::set_var("USER", "root");
     std::env::set_var("OS_RELEASE_PATH", os_release_path.to_str().unwrap());
 
-    let mut cmd = Command::cargo_bin("your_program_name").unwrap();
+    let mut cmd = Command::cargo_bin("flatpatch").unwrap();
     cmd.assert()
         .failure()
         .stderr(contains("Only Ubuntu is supported."));
@@ -38,7 +38,7 @@ fn test_snap_remove() {
     // Simulate a system with installed Snap package ('hello')
     std::env::set_var("USER", "root");
 
-    let mut cmd = Command::cargo_bin("your_program_name").unwrap();
+    let mut cmd = Command::cargo_bin("flatpatch").unwrap();
     cmd.assert()
         .success()
         .stdout(contains("Successfully removed snap 'hello'"));
@@ -48,7 +48,7 @@ fn test_snap_remove() {
 fn test_flatpak_install() {
     std::env::set_var("USER", "root");
 
-    let mut cmd = Command::cargo_bin("your_program_name").unwrap();
+    let mut cmd = Command::cargo_bin("flatpatch").unwrap();
     cmd.assert()
         .success()
         .stdout(contains("Successfully installed Flatpak and plugin"));
