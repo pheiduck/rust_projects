@@ -1,6 +1,6 @@
 use assert_cmd::Command;
-use predicates::str::contains;  // Import only what's needed
 use std::fs::{File};
+use predicates::str::contains;
 use std::io::Write;
 use tempfile::tempdir;
 
