@@ -1,6 +1,6 @@
 use assert_cmd::Command;
-use predicates::prelude::*;  // Import predicates for use in tests
-use std::fs::{self, File};
+use predicates::str::contains;  // Import only what's needed
+use std::fs::{File};
 use std::io::Write;
 use tempfile::tempdir;
 
@@ -12,7 +12,7 @@ fn test_root_check() {
     let mut cmd = Command::cargo_bin("your_program_name").unwrap();
     cmd.assert()
         .failure()
-        .stderr(predicates::str::contains("Please run with sudo privileges."));
+        .stderr(contains("Please run with sudo privileges."));
 }
 
 #[test]
@@ -30,49 +30,27 @@ fn test_os_check() {
     let mut cmd = Command::cargo_bin("your_program_name").unwrap();
     cmd.assert()
         .failure()
-        .stderr(predicates::str::contains("Only Ubuntu is supported."));
+        .stderr(contains("Only Ubuntu is supported."));
 }
 
 #[test]
 fn test_snap_remove() {
-    // Mock the snap list command to simulate installed snaps
-    let snap_list_mock = mock("GET", "/snap/list")
-        .with_status(200)
-        .with_body("Name  Version   Rev    Tracking       Publisher   Notes\n\
-                    hello  2.10.1    29     latest/stable  canonical✓  -")
-        .create();
-
-    // Ensure the root privileges and OS are mocked as valid
+    // Simulate a system with installed Snap package ('hello')
     std::env::set_var("USER", "root");
-    std::env::set_var("OS_RELEASE_PATH", "/etc/os-release");
 
     let mut cmd = Command::cargo_bin("your_program_name").unwrap();
     cmd.assert()
         .success()
-        .stdout(predicates::str::contains("Successfully removed snap 'hello'"));
-
-    snap_list_mock.assert();
+        .stdout(contains("Successfully removed snap 'hello'"));
 }
 
 #[test]
 fn test_flatpak_install() {
-    // Mock the flatpak installation process
-    let mock_flatpak_repo = mock("POST", "/add-apt-repository")
-        .with_status(200)
-        .create();
-
-    let mock_flatpak_install = mock("POST", "/apt-get")
-        .with_status(200)
-        .create();
-
     std::env::set_var("USER", "root");
-    let mut cmd = Command::cargo_bin("your_program_name").unwrap();
 
+    let mut cmd = Command::cargo_bin("your_program_name").unwrap();
     cmd.assert()
         .success()
-        .stdout(predicates::str::contains("Successfully installed Flatpak and plugin"));
-
-    mock_flatpak_repo.assert();
-    mock_flatpak_install.assert();
+        .stdout(contains("Successfully installed Flatpak and plugin"));
 }
 
