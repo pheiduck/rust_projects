@@ -1,5 +1,5 @@
 use assert_cmd::Command;
-use mockito::mock;
+use predicates::prelude::*;  // Import predicates for use in tests
 use std::fs::{self, File};
 use std::io::Write;
 use tempfile::tempdir;
@@ -75,3 +75,4 @@ fn test_flatpak_install() {
     mock_flatpak_repo.assert();
     mock_flatpak_install.assert();
 }
+
