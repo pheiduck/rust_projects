@@ -11,7 +11,7 @@ keywords = ["AirConnect", "installer", "Linux", "Rust", "systemd"]
 categories = ["command-line-utilities", "system-utilities"]
 
 [dependencies]
-tempfile = "3.12"
+tempfile = "3.13"
 which = "6.0.3"
 indicatif = { version = "0.17.8", optional = true }
 
