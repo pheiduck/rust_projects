@@ -12,7 +12,7 @@ categories = ["command-line-utilities", "system-utilities"]
 
 [dependencies]
 tempfile = "3.13.0"
-which = "6.0.4"
+which = "6.0.3"
 indicatif = { version = "0.17.8", optional = true }
 
 [features]
