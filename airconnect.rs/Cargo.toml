@@ -11,9 +11,9 @@ keywords = ["AirConnect", "installer", "Linux", "Rust", "systemd"]
 categories = ["command-line-utilities", "system-utilities"]
 
 [dependencies]
-tempfile = "3.13.0"
-which = "6.0.3"
-indicatif = { version = "0.17.8", optional = true }
+tempfile = "3.14.0"
+which = "7.0.0"
+indicatif = { version = "0.17.9", optional = true }
 
 [features]
 default = ["progress"]
