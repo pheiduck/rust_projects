@@ -21,7 +21,7 @@ jobs:
       run: |
         cd airconnect.rs
         cargo update
-        cd flatpatch.rs
+        cd ../flatpatch.rs
         cargo update
         git config --global user.name 'Cargo Update Bot'
         git config --global user.email 'cargoupbot@users.noreply.github.com'
