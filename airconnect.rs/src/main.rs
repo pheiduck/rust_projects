@@ -2,7 +2,7 @@ use std::env;
 use std::fs;
 use std::io::Write;
 use std::os::unix::fs::PermissionsExt;
-use std::process::{exit, Command};
+use std::process::{Command, exit};
 
 fn main() {
     // Variables
@@ -24,7 +24,9 @@ fn main() {
     let uname_str = String::from_utf8_lossy(&uname.stdout);
 
     if uname_str.trim() != "Linux" {
-        println!("\x1b[0;31mERROR:\x1b[0m You are trying to install this on an unsupported System.\nThis Installer is only supported by Linux Distributions (w/ systemd).");
+        println!(
+            "\x1b[0;31mERROR:\x1b[0m You are trying to install this on an unsupported System.\nThis Installer is only supported by Linux Distributions (w/ systemd)."
+        );
         exit(1);
     }
 
