@@ -17,7 +17,7 @@ categories = ["command-line-utilities", "system-tools"]
 opt-level = "z"
 
 [dependencies]
-users = "0.11.0"
+uzers = "0.12.2"
 
 [dev-dependencies]
 assert_cmd = "2.0.16"
