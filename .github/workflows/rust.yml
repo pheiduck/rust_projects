@@ -33,10 +33,12 @@ jobs:
         popd
     - name: Run tests
       run: |
-        cd airconnect.rs
+        pushd airconnect.rs
         cargo test --verbose
-        cd flatpatch.rs
+        popd
+        pushd flatpatch.rs
         cargo test --verbose
+        popd
 
   rustfmt:
     name: rustfmt
