@@ -4,7 +4,7 @@ use std::env;
 use std::fs::{self, File};
 use std::io::Write;
 use std::path::Path;
-use std::process::{exit, Command};
+use std::process::{Command, exit};
 
 fn main() {
     // Farben definieren
