@@ -23,7 +23,11 @@ fn main() {
     // Überprüfen, ob das Betriebssystem Ubuntu ist
     let os_release = fs::read_to_string("/etc/os-release").unwrap_or_default();
     if !os_release.contains("ID=ubuntu") {
-        eprintln!("{}ERROR: {}You are trying to install this on an unsupported distribution.\nOnly Ubuntu is supported.", red, nc);
+        eprintln!(
+            "{}ERROR: {}You are trying to install this on an unsupported distribution.\nOnly Ubuntu is supported.",
+            red, nc
+        );
+
         exit(1);
     }
 
